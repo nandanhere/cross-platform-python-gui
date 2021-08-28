@@ -1,6 +1,6 @@
 ![](https://github.com/maltfield/cross-platform-python-gui/workflows/build/badge.svg)
 
-# Kivy Matrix Calculator (Cross Platform Python GUI Demo)
+# Kivy Snake Game  (Cross Platform Python GUI Demo)
 
 This repo a demonstration of a Snake game app in kivy [developed by nandanhere](https://github.com/nandanhere/cross-platform-python-gui).
 
