@@ -199,7 +199,7 @@ pushd buildozer
 # create buildozer.spec file
 cat > buildozer.spec << EOF
 [app]
-title = Hello World
+title = kivySnake
 package.name = ${APP_NAME}
 package.domain = org.test
 source.dir = ../src/
