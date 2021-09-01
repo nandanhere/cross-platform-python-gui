@@ -82,8 +82,6 @@ ${PIP_PATH} install kivy
 
 ${PIP_PATH} install --ignore-installed --upgrade --cache-dir build/deps/ --no-index --find-links file://`pwd`/build/deps/ build/deps/PyInstaller-3.6.tar.gz
 ${PIP_PATH} install kivymd
-${PIP_PATH} install pyenchant
-${PIP_PATH} install opencv-python
 #####################
 # PYINSTALLER BUILD #
 #####################
@@ -93,9 +91,10 @@ pushd pyinstaller
 
 cat >> ${APP_NAME}.spec <<EOF
 # -*- mode: python ; coding: utf-8 -*-
+from kivy_deps import sdl2, glew
+from kivymd import hooks_path as kivymd_hooks_path
 
 block_cipher = None
-
 
 a = Analysis(['../src/main.py'],
              pathex=['./'],
