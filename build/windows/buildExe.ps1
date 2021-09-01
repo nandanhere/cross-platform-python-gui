@@ -62,7 +62,6 @@ C:\tmp\kivy_venv\Scripts\python.exe -m pip install --upgrade docutils pygments p
 
 # install kivy and all other python dependencies with pip into our virtual env
 C:\tmp\kivy_venv\Scripts\python.exe -m pip install --upgrade -r requirements.txt | Out-String
-
 ##################################
 # PREPARE BUILD WITH PYINSTALLER #
 ##################################
