@@ -23,8 +23,6 @@ from kivy.uix.screenmanager import Screen
 from kivymd.uix.button import MDIconButton
 from kivy.uix.screenmanager import Screen, ScreenManager,FadeTransition
 from kivymd.uix.boxlayout import MDBoxLayout
-from kivy_deps import sdl2, glew
-from kivymd import hooks_path as kivymd_hooks_path
 
 # for android ----------
 if platform == 'android':
