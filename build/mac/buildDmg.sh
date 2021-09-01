@@ -22,7 +22,7 @@ set -x
 
 PYTHON_PATH="`find /usr/local/Cellar/python* -type f -wholename *bin/python3* | sort -n | uniq | head -n1`"
 PIP_PATH="`find /usr/local/Cellar/python* -type f -wholename *bin/pip3* | sort -n | uniq | head -n1`"
-APP_NAME='kivySnake'
+APP_NAME='helloWorld'
 
 PYTHON_VERSION="`${PYTHON_PATH} --version | cut -d' ' -f2`"
 PYTHON_EXEC_VERSION="`echo ${PYTHON_VERSION} | cut -d. -f1-2`"
@@ -70,7 +70,7 @@ PIP_PATH="`find /usr/local/Cellar/python -type f -wholename *bin/pip3* | sort -n
 
 ${PIP_PATH} install --ignore-installed --upgrade --cache-dir build/deps/ --no-index --find-links file://`pwd`/build/deps/ build/deps/setuptools-49.1.0-py3-none-any.whl
 ${PIP_PATH} install --ignore-installed --upgrade --cache-dir build/deps/ --no-index --find-links file://`pwd`/build/deps/ build/deps/wheel-0.34.2-py2.py3-none-any.whl
-# TODO: optimise this for local file
+
 # setup a virtualenv to isolate our app's python depends
 #sudo ${PYTHON_PATH} -m ensurepip
 #${PIP_PATH} install --upgrade --force-reinstall --user pip setuptools
@@ -78,11 +78,9 @@ ${PIP_PATH} install --ignore-installed --upgrade --cache-dir build/deps/ --no-in
 #${PYTHON_PATH} -m virtualenv /tmp/kivy_venv
 
 # install kivy and all other python dependencies with pip
-${PIP_PATH} install kivy
-
+${PIP_PATH} install --ignore-installed --upgrade --cache-dir build/deps/ --no-index --find-links file://`pwd`/build/deps/ build/deps/Kivy-1.11.1-cp37-cp37m-macosx_10_6_intel.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl
 ${PIP_PATH} install --ignore-installed --upgrade --cache-dir build/deps/ --no-index --find-links file://`pwd`/build/deps/ build/deps/PyInstaller-3.6.tar.gz
-${PIP_PATH} install kivymd
-${PIP_PATH} install docutils pygments pypiwin32 kivy.deps.sdl2 kivy.deps.glew kivy.deps.gstreamer
+
 #####################
 # PYINSTALLER BUILD #
 #####################
@@ -92,17 +90,13 @@ pushd pyinstaller
 
 cat >> ${APP_NAME}.spec <<EOF
 # -*- mode: python ; coding: utf-8 -*-
-import sdl2, glew
-from kivymd import hooks_path as kivymd_hooks_path
-
 block_cipher = None
-
 a = Analysis(['../src/main.py'],
              pathex=['./'],
              binaries=[],
-             datas=[('main.kv', '.')],
+             datas=[],
              hiddenimports=['pkg_resources.py2_warn'],
-             hookspath=[kivymd_hooks_path],
+             hookspath=[],
              runtime_hooks=[],
              excludes=['_tkinter', 'Tkinter', 'enchant', 'twisted'],
              win_no_prefer_redirects=False,
@@ -125,7 +119,6 @@ coll = COLLECT(exe, Tree('../src/'),
                a.binaries,
                a.zipfiles,
                a.datas,
-               *[Tree(p) for p in (sdl2.dep_bins + glew.dep_bins)],
                strip=False,
                upx=True,
                upx_exclude=[],
