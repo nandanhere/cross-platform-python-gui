@@ -82,6 +82,7 @@ ${PIP_PATH} install kivy
 
 ${PIP_PATH} install --ignore-installed --upgrade --cache-dir build/deps/ --no-index --find-links file://`pwd`/build/deps/ build/deps/PyInstaller-3.6.tar.gz
 ${PIP_PATH} install kivymd
+${PIP_PATH} install docutils pygments pypiwin32 kivy.deps.sdl2 kivy.deps.glew kivy.deps.gstreamer
 #####################
 # PYINSTALLER BUILD #
 #####################
@@ -91,7 +92,7 @@ pushd pyinstaller
 
 cat >> ${APP_NAME}.spec <<EOF
 # -*- mode: python ; coding: utf-8 -*-
-from kivy.deps import sdl2, glew
+import sdl2, glew
 from kivymd import hooks_path as kivymd_hooks_path
 
 block_cipher = None
