@@ -71,7 +71,6 @@ PIP_PATH="`find /usr/local/Cellar/python -type f -wholename *bin/pip3* | sort -n
 ${PIP_PATH} install --ignore-installed --upgrade --cache-dir build/deps/ --no-index --find-links file://`pwd`/build/deps/ build/deps/setuptools-49.1.0-py3-none-any.whl
 ${PIP_PATH} install --ignore-installed --upgrade --cache-dir build/deps/ --no-index --find-links file://`pwd`/build/deps/ build/deps/wheel-0.34.2-py2.py3-none-any.whl
 # TODO: optimise this for local file
-${PIP_PATH} install kivymd
 # setup a virtualenv to isolate our app's python depends
 #sudo ${PYTHON_PATH} -m ensurepip
 #${PIP_PATH} install --upgrade --force-reinstall --user pip setuptools
@@ -79,8 +78,10 @@ ${PIP_PATH} install kivymd
 #${PYTHON_PATH} -m virtualenv /tmp/kivy_venv
 
 # install kivy and all other python dependencies with pip
-${PIP_PATH} install --ignore-installed --upgrade --cache-dir build/deps/ --no-index --find-links file://`pwd`/build/deps/ build/deps/Kivy-1.11.1-cp37-cp37m-macosx_10_6_intel.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl
+${PIP_PATH} install kivy
+
 ${PIP_PATH} install --ignore-installed --upgrade --cache-dir build/deps/ --no-index --find-links file://`pwd`/build/deps/ build/deps/PyInstaller-3.6.tar.gz
+${PIP_PATH} install kivymd
 
 #####################
 # PYINSTALLER BUILD #
