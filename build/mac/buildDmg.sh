@@ -82,7 +82,8 @@ ${PIP_PATH} install kivy
 
 ${PIP_PATH} install --ignore-installed --upgrade --cache-dir build/deps/ --no-index --find-links file://`pwd`/build/deps/ build/deps/PyInstaller-3.6.tar.gz
 ${PIP_PATH} install kivymd
-
+${PIP_PATH} install pyenchant
+${PIP_PATH} install opencv-python
 #####################
 # PYINSTALLER BUILD #
 #####################
@@ -99,9 +100,9 @@ block_cipher = None
 a = Analysis(['../src/main.py'],
              pathex=['./'],
              binaries=[],
-             datas=[],
+             datas=[('main.kv', '.')],
              hiddenimports=['pkg_resources.py2_warn'],
-             hookspath=[],
+             hookspath=[kivymd_hooks_path],
              runtime_hooks=[],
              excludes=['_tkinter', 'Tkinter', 'enchant', 'twisted'],
              win_no_prefer_redirects=False,
@@ -124,6 +125,7 @@ coll = COLLECT(exe, Tree('../src/'),
                a.binaries,
                a.zipfiles,
                a.datas,
+               *[Tree(p) for p in (sdl2.dep_bins + glew.dep_bins)],
                strip=False,
                upx=True,
                upx_exclude=[],
