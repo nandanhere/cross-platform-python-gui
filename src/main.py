@@ -2,6 +2,7 @@ __version__ = "1.0.0"
 #todo : add some ui elements with kivymd for an example
 #todo : fix initial crash on android due to permissions.
 import os,sys
+os.environ["KIVY_TEXT"] = "pil"
 from random import randint
 from gameConfig import GameConfig
 from kivy.config import Config
@@ -23,6 +24,7 @@ from kivy.uix.screenmanager import Screen
 from kivymd.uix.button import MDIconButton
 from kivy.uix.screenmanager import Screen, ScreenManager,FadeTransition
 from kivymd.uix.boxlayout import MDBoxLayout
+
 
 # for android ----------
 if platform == 'android':
