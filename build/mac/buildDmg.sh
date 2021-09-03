@@ -80,7 +80,7 @@ ${PIP_PATH} install --ignore-installed --upgrade --cache-dir build/deps/ --no-in
 # install kivy and all other python dependencies with pip
 ${PIP_PATH} install --ignore-installed --upgrade --cache-dir build/deps/ --no-index --find-links file://`pwd`/build/deps/ build/deps/Kivy-1.11.1-cp37-cp37m-macosx_10_6_intel.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl
 ${PIP_PATH} install --ignore-installed --upgrade --cache-dir build/deps/ --no-index --find-links file://`pwd`/build/deps/ build/deps/PyInstaller-3.6.tar.gz
-python -m pip install docutils pygments pypiwin32 kivy.deps.sdl2 kivy.deps.glew pyobjc
+${PIP_PATH} install docutils pygments pypiwin32 kivy.deps.sdl2 kivy.deps.glew pyobjc
 
 #####################
 # PYINSTALLER BUILD #
