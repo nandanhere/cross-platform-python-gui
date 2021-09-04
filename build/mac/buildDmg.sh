@@ -91,6 +91,9 @@ pushd pyinstaller
 
 cat >> ${APP_NAME}.spec <<EOF
 # -*- mode: python ; coding: utf-8 -*-
+from kivy_deps import glew, sdl2
+Tree(<'path to main.py'>),
+*[Tree(p) for p in (sdl2.dep_bins + glew.dep_bins)],
 block_cipher = None
 a = Analysis(['../src/main.py'],
              pathex=['./'],
