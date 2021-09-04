@@ -78,7 +78,7 @@ ${PIP_PATH} install --ignore-installed --upgrade --cache-dir build/deps/ --no-in
 #${PYTHON_PATH} -m virtualenv /tmp/kivy_venv
 
 # install kivy and all other python dependencies with pip
-${PIP_PATH} install --ignore-installed --upgrade --cache-dir build/deps/ --no-index --find-links file://`pwd`/build/deps/ build/deps/Kivy-1.11.1-cp37-cp37m-macosx_10_6_intel.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl
+${PIP_PATH} install kivy kivymd
 ${PIP_PATH} install --ignore-installed --upgrade --cache-dir build/deps/ --no-index --find-links file://`pwd`/build/deps/ build/deps/PyInstaller-3.6.tar.gz
 ${PIP_PATH} install docutils pygments pypiwin32 kivy.deps.sdl2 kivy.deps.glew pyobjc
 
@@ -91,9 +91,6 @@ pushd pyinstaller
 
 cat >> ${APP_NAME}.spec <<EOF
 # -*- mode: python ; coding: utf-8 -*-
-from kivy_deps import glew, sdl2
-Tree(<'path to main.py'>),
-*[Tree(p) for p in (sdl2.dep_bins + glew.dep_bins)],
 block_cipher = None
 a = Analysis(['../src/main.py'],
              pathex=['./'],
