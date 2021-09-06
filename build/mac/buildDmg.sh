@@ -130,7 +130,7 @@ app = BUNDLE(coll,
              bundle_identifier=None)
 EOF
 
-${PYTHON_PATH} -m PyInstaller -y --clean --windowed "${APP_NAME}.spec"
+${PYTHON_PATH} -m PyInstaller -y --clean --windowed "${APP_NAME}.spec" -d
 
 pushd dist
 hdiutil create ./${APP_NAME}.dmg -srcfolder ${APP_NAME}.app -ov
