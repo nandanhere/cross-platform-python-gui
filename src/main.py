@@ -3,6 +3,7 @@ __version__ = "1.0.0"
 #todo : fix initial crash on android due to permissions.
 import os,sys
 os.environ["KIVY_TEXT"] = "pil"
+os.environ['KIVY_GL_BACKEND'] = 'angle_sdl2'
 from random import randint
 from gameConfig import GameConfig
 from kivy.config import Config
